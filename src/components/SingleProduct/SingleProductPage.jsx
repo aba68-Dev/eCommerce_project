@@ -6,6 +6,7 @@ import useData from "../../hooks/useData";
 import Loader from "./../Common/Loader";
 import CartContext from "../../contexts/CartContext";
 import UserContext from "../../contexts/UserContext";
+import config from "../../config.json";
 
 // const product = {
 //   id: 1,
@@ -39,7 +40,7 @@ const SingleProductPage = () => {
             <div className="single_product_thumbnails">
               {product.images.map((image, index) => (
                 <img
-                  src={`http://localhost:5000/products/${image}`}
+                  src={`${config.backendurl}/products/${image}`}
                   key={index}
                   alt={product.title}
                   className={selectedImage === index ? "selected_image" : ""}
