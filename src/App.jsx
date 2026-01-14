@@ -95,6 +95,11 @@ const App = () => {
     [cart]
   );
 
+  // 1. Define the clearCart function
+  const clearCart = useCallback(() => {
+    dispatchCart({ type: "REVERT_CART", payload: { cart: [] } });
+  }, []);
+
   const getCart = useCallback(() => {
     getCartAPI()
       .then((res) => {
@@ -114,7 +119,7 @@ const App = () => {
   return (
     <UserContext.Provider value={user}>
       <CartContext.Provider
-        value={{ cart, addToCart, removeFromCart, updateCart }}
+        value={{ cart, addToCart, removeFromCart, updateCart, clearCart }} // 2. Destructure clearCart instead of setCart
       >
         <div className="app">
           <Navbar />

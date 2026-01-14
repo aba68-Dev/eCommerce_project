@@ -16,7 +16,8 @@ const CartPage = () => {
 
   // const [subTotal, setsubTotal] = useState(0);
   const user = useContext(UserContext);
-  const { cart, removeFromCart, updateCart, setCart } = useContext(CartContext);
+  const { cart, removeFromCart, updateCart, clearCart } =
+    useContext(CartContext); // 1. Destructure clearCart instead of setCart
 
   const subTotal = useMemo(() => {
     let total = 0;
@@ -29,7 +30,10 @@ const CartPage = () => {
 
   const checkout = () => {
     const oldCart = [...cart];
-    setCart([]);
+    debugger;
+    //setCart([]);
+    // 2. Call clearCart() to empty the UI state
+    clearCart();
     checkoutAPI()
       .then(() => {
         toast.success("Order placed successfully!");

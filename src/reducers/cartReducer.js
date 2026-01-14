@@ -1,11 +1,12 @@
 const cartReducer = (cart, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
+      const { product, quantity } = action.payload; // 1. Define 'product' first
       const updatedCart = [...cart];
       const productIndex = updatedCart.findIndex(
+        // 2. Now you can safely use 'product' here
         (item) => item.product._id === product.id
       );
-      const { product, quantity } = action.payload;
 
       if (productIndex === -1) {
         updatedCart.push({ product: product, quantity: quantity });
